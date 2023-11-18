@@ -16,3 +16,11 @@ Plan
 · Building sentiment analysis pipeline ~5hr
 · Applying to a certain topic ~1-2hr X 5-10
 Total ~20 hours
+
+# Progress Report 
+1)	Progress made so far.
+I have built a cheap and effective pipeline to identify and analyze the sentiment of a user or users on a specific topic and trend it over time. The project uses open-source tools and OpenAI Chat GPT integration. I have also rewritten an open-source Facebook scrapper to get it working again. The code has been uploaded to github minus some user keys and account profiles. 
+2)	Remaining Tasks
+I need to clean up and refactor code so that it can be run without manual intervention. Despite much effort I have not been able to create a robust data scrapping pipeline as will be described below. 
+3)	Challenges Being Faced
+During the course of the project, it has become continuously harder to access open source social media data. Facebook looked promising due the existence of api free un rate limited libraries such as https://github.com/kevinzg/facebook-scraper. However, they became increasingly inoperable during the course of the project. I then tried twitter however the rate limit per account was again decreased. I will need to work hard to identify an economical source of large scale account information. 
