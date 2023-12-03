@@ -4,9 +4,7 @@ from rank_bm25 import BM25Okapi
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from open_ai import calc_vibes
-import matplotlib.pyplot as plt
 import re
-import nltk
 
 
 
