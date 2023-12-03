@@ -1,6 +1,9 @@
 import pandas as pd
 import requests
 from io import StringIO
+from search import search_data
+import plotly.express as px
+import streamlit as st
 import os
 
 
@@ -28,13 +31,35 @@ def read_csv_files_from_github(user, repo, folder):
 
 
 # Replace 'username', 'repository_name', and 'folder_name' with your GitHub details
-github_user = 'username'
-github_repo = 'repository_name'
-folder_name = 'folder_containing_csv_files'
+github_user = 'Callen-S'
+github_repo = 'CS410_Proj'
+folder_name = 'data'
+
 
 # Call the function to read CSV files and store them in a dictionary
 csv_data_dict = read_csv_files_from_github(github_user, github_repo, folder_name)
 
-# Access the dictionary where keys are file names and values are Pandas DataFrames
-for file_name, df in csv_data_dict.items():
-    print(f"File: {file_name}\nDataFrame:\n{df}\n")
+selections = st.multiselect('Select Data', csv_data_dict.keys(), default=['elon.csv'])
+search_term = st.text_input('Enter a Search and eval Term', value="I think the economy is going to do well")
+
+list_of_dfs = []
+for df_key in selections:
+    df = csv_data_dict[df_key]
+
+    list_of_dfs.append(search_data(df,search_term, df_key))
+
+df = pd.concat(list_of_dfs, ignore_index=True)
+date_user_count = df.groupby('date')['user'].nunique().reset_index()
+
+# Filtering the dates where both users have data
+valid_dates = date_user_count[date_user_count['user'] == len(selections)]['date']
+
+# Filtering the original DataFrame for rows with the valid dates
+df = df[df['date'].isin(valid_dates)]
+
+df['date'] = df['date'].astype(str)
+
+
+fig = px.bar(df, x="date", y="Sentiment", color='user', hover_data='Most Relevant Text', barmode='group')
+fig.update_layout(autotypenumbers='convert types')
+st.plotly_chart(fig)
