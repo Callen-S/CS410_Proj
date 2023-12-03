@@ -6,6 +6,7 @@ from nltk.tokenize import word_tokenize
 import streamlit
 if 'word' not in streamlit.session_state.keys():
     nltk.download('stopwords')
+    nltk.download('punkt')
     streamlit.session_state['words'] = True
 from nltk.corpus import stopwords
 from open_ai import calc_vibes
