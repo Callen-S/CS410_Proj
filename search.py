@@ -1,7 +1,12 @@
 import pandas as pd
 import numpy as np
 from rank_bm25 import BM25Okapi
+import nltk
 from nltk.tokenize import word_tokenize
+import streamlit
+if 'word' not in streamlit.session_state.keys():
+    nltk.download('stopwords')
+    streamlit.session_state['words'] = True
 from nltk.corpus import stopwords
 from open_ai import calc_vibes
 import re
