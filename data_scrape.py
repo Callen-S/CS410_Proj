@@ -9,7 +9,7 @@ warnings.filterwarnings("ignore")
 
 async def main():
     api = API()
-    user_id = 22703645
+    user_id = 16129920
     cols = ["Name", "Text", "Time"]
     data = {col: [] for col in cols}
 
@@ -19,7 +19,7 @@ async def main():
         data['Time'].append(tweet.date)
 
     df = pd.DataFrame(data)
-    df.to_csv('tucker' +'.csv')
+    df.to_csv('maddow' +'.csv')
 
 if __name__ == "__main__":
     asyncio.run(main())

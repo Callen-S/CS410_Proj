@@ -6,7 +6,7 @@ import plotly.express as px
 import streamlit as st
 import os
 
-
+line = st.toggle('Line or Bar Chart', value=False,)
 def read_csv_files_from_github(user, repo, folder):
     # GitHub repository URL
     base_url = f'https://raw.githubusercontent.com/{user}/{repo}/main/{folder}/'
@@ -61,5 +61,17 @@ df['date'] = df['date'].astype(str)
 
 
 fig = px.bar(df, x="date", y="Sentiment", color='user', hover_data='Most Relevant Text', barmode='group')
+fig2 = px.bar(df, x="date", y="Relevance Score", color='user', hover_data='Most Relevant Text', barmode='group')
+
+if line:
+    fig = px.line(df, x="date", y="Sentiment", color='user', hover_data='Most Relevant Text')
+    fig2 = px.line(df, x="date", y="Relevance Score", color='user', hover_data='Most Relevant Text')
+
+
+
 fig.update_layout(autotypenumbers='convert types')
+fig2.update_layout(autotypenumbers='convert types')
 st.plotly_chart(fig)
+st.plotly_chart(fig2)
+
+
