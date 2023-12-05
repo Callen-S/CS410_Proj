@@ -6,7 +6,16 @@ import plotly.express as px
 import streamlit as st
 import os
 
-line = st.toggle('Line or Bar Chart', value=False,)
+line = st.toggle('Line or Bar Chart', value=False)
+
+st.set_page_config(
+    page_title="Sentiment Analysis Tool",  # Title of the tab
+    page_icon=":chart_with_upwards_trend:",  # Icon for the tab (optional)
+)
+
+# Your Streamlit app code goes here
+st.title("Sentiment Analysis Tool - CS410")
+
 def read_csv_files_from_github(user, repo, folder):
     # GitHub repository URL
     base_url = f'https://raw.githubusercontent.com/{user}/{repo}/main/{folder}/'
