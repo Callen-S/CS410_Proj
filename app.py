@@ -5,13 +5,14 @@ from search import search_data
 import plotly.express as px
 import streamlit as st
 import os
-
-line = st.toggle('Line or Bar Chart', value=False)
-
 st.set_page_config(
     page_title="Sentiment Analysis Tool",  # Title of the tab
     page_icon=":chart_with_upwards_trend:",  # Icon for the tab (optional)
 )
+
+line = st.toggle('Line or Bar Chart', value=False)
+
+
 
 # Your Streamlit app code goes here
 st.title("Sentiment Analysis Tool - CS410")
