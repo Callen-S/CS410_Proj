@@ -23,6 +23,7 @@ def read_csv_files_from_github(user, repo, folder):
 
     # Fetching file names from the GitHub repository
     files = requests.get(f'https://api.github.com/repos/{user}/{repo}/contents/{folder}')
+    print(files.json())
     file_list = [file['name'] for file in files.json() if file['name'].endswith('.csv')]
 
     data_dict = {}
