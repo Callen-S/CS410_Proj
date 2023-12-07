@@ -21,8 +21,14 @@ def read_csv_files_from_github(user, repo, folder):
     # GitHub repository URL
     base_url = f'https://raw.githubusercontent.com/{user}/{repo}/main/{folder}/'
 
+    headers = {
+        'Authorization': f'token {st.secrets["token"]}',
+        'Accept': 'application/vnd.github.v3+json'
+    }
+
+
     # Fetching file names from the GitHub repository
-    files = requests.get(f'https://api.github.com/repos/{user}/{repo}/contents/{folder}')
+    files = requests.get(f'https://api.github.com/repos/{user}/{repo}/contents/{folder}', headers=headers)
     print(files.json())
     file_list = [file['name'] for file in files.json() if file['name'].endswith('.csv')]
 
