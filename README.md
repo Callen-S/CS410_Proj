@@ -9,9 +9,9 @@ To use the data_scrape.py tool to create new data you need to have a series of v
 The rest of the app is a streamlit app that allows you to find relevant tweets and uses chat gpt to analyze their sentiment. It uses BM25 search to find the most relevant tweet in the text segment of each tweet for every month it has data. 
 It then asks chat GPT to asses the sentiment on a scale of 1-10 while 10 is positive vs the query.
 
-This is the link - https://callentest.streamlit.app/-. You can also find the demo video here.
+This is the [link](https://callentest.streamlit.app/). You can also find the demo video [here](https://www.youtube.com/watch?v=2CgMR39hZck).
 
-To run the app locally you can clone the repo and hit streamlit run app.py
+To run the app locally you can clone the repo and hit streamlit run app.py which is the basic structure of a [streamlit app](https://streamlit.io/)
 You will get two errors:
 	Not configuring a OpenAi Key 
 	Not configuring a github key to read the data 
